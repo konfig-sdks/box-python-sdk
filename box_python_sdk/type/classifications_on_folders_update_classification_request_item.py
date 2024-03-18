@@ -1,0 +1,33 @@
+# coding: utf-8
+
+"""
+    Box Platform API
+
+    [Box Platform](https://box.dev) provides functionality to provide access to content stored within [Box](https://box.com). It provides endpoints for basic manipulation of files and folders, management of users within an enterprise, as well as more complex topics such as legal holds and retention policies.
+
+    The version of the OpenAPI document: 2.0.0
+    Contact: devrel@box.com
+    Created by: https://box.dev
+"""
+
+from datetime import datetime, date
+import typing
+from enum import Enum
+from typing_extensions import TypedDict, Literal, TYPE_CHECKING
+
+
+class RequiredClassificationsOnFoldersUpdateClassificationRequestItem(TypedDict):
+    # `replace`
+    op: str
+
+    # Defines classifications  available in the enterprise.
+    path: str
+
+    # The name of the classification to apply to this folder.  To list the available classifications in an enterprise, use the classification API to retrieve the [classification template](e://get_metadata_templates_enterprise_securityClassification-6VMVochwUWo_schema) which lists all available classification keys.
+    value: str
+
+class OptionalClassificationsOnFoldersUpdateClassificationRequestItem(TypedDict, total=False):
+    pass
+
+class ClassificationsOnFoldersUpdateClassificationRequestItem(RequiredClassificationsOnFoldersUpdateClassificationRequestItem, OptionalClassificationsOnFoldersUpdateClassificationRequestItem):
+    pass

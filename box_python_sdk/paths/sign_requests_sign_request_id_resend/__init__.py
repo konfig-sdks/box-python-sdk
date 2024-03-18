@@ -1,0 +1,7 @@
+# do not import all endpoints into this module because that uses a lot of memory and stack frames
+# if you need the ability to import all endpoints from this module, import them with
+# from box_python_sdk.paths.sign_requests_sign_request_id_resend import Api
+
+from box_python_sdk.paths import PathValues
+
+path = PathValues.SIGN_REQUESTS_SIGN_REQUEST_ID_RESEND

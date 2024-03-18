@@ -1,0 +1,9 @@
+from box_python_sdk.paths.shield_information_barrier_segment_restrictions_shield_information_barrier_segment_restriction_id.get import ApiForget
+from box_python_sdk.paths.shield_information_barrier_segment_restrictions_shield_information_barrier_segment_restriction_id.delete import ApiFordelete
+
+
+class ShieldInformationBarrierSegmentRestrictionsShieldInformationBarrierSegmentRestrictionId(
+    ApiForget,
+    ApiFordelete,
+):
+    pass
