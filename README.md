@@ -67,7 +67,6 @@
     + [`box.email_aliases.remove_alias`](#boxemail_aliasesremove_alias)
     + [`box.events.events`](#boxeventsevents)
     + [`box.events.events_0`](#boxeventsevents_0)
-    + [`box.file_activities.list_by_file_id`](#boxfile_activitieslist_by_file_id)
     + [`box.file_requests.copy_request_to_folder`](#boxfile_requestscopy_request_to_folder)
     + [`box.file_requests.delete_permanently`](#boxfile_requestsdelete_permanently)
     + [`box.file_requests.get_information`](#boxfile_requestsget_information)
@@ -306,7 +305,8 @@ Python >=3.7
 from pprint import pprint
 from box_python_sdk import Box, ApiException
 
-box = Box()
+box = Box(
+)
 
 try:
     # Authorize user
@@ -331,12 +331,13 @@ except ApiException as e:
 `async` support is available by prepending `a` to any method.
 
 ```python
+
 import asyncio
 from pprint import pprint
 from box_python_sdk import Box, ApiException
 
-box = Box()
-
+box = Box(
+)
 
 async def main():
     try:
@@ -356,7 +357,6 @@ async def main():
         pprint(e.reason)
         pprint(e.round_trip_time)
 
-
 asyncio.run(main())
 ```
 
@@ -368,7 +368,8 @@ To access raw HTTP response values, use the `.raw` namespace.
 from pprint import pprint
 from box_python_sdk import Box, ApiException
 
-box = Box()
+box = Box(
+)
 
 try:
     # Authorize user
@@ -884,10 +885,8 @@ URL explicitly, for example
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-get_classification_metadata_instance_response = (
-    box.classifications_on_files.get_classification_metadata_instance(
-        file_id="12345",
-    )
+get_classification_metadata_instance_response = box.classifications_on_files.get_classification_metadata_instance(
+    file_id="12345",
 )
 ```
 
@@ -950,17 +949,15 @@ defined for the enterprise will be accepted.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-update_classification_metadata_instance_response = (
-    box.classifications_on_files.update_classification_metadata_instance(
-        body=[
-            {
-                "op": "replace",
-                "path": "/Box__Security__Classification__Key",
-                "value": "Sensitive",
-            }
-        ],
-        file_id="12345",
-    )
+update_classification_metadata_instance_response = box.classifications_on_files.update_classification_metadata_instance(
+    body=[
+        {
+            "op": "replace",
+            "path": "/Box__Security__Classification__Key",
+            "value": "Sensitive",
+        }
+    ],
+    file_id="12345",
 )
 ```
 
@@ -996,11 +993,9 @@ URL explicitly, for example
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-add_classification_to_folder_response = (
-    box.classifications_on_folders.add_classification_to_folder(
-        folder_id="12345",
-        box__security__classification__key="Sensitive",
-    )
+add_classification_to_folder_response = box.classifications_on_folders.add_classification_to_folder(
+    folder_id="12345",
+    box__security__classification__key="Sensitive",
 )
 ```
 
@@ -1041,10 +1036,8 @@ URL explicitly, for example
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-get_classification_metadata_response = (
-    box.classifications_on_folders.get_classification_metadata(
-        folder_id="12345",
-    )
+get_classification_metadata_response = box.classifications_on_folders.get_classification_metadata(
+    folder_id="12345",
 )
 ```
 
@@ -1916,14 +1909,10 @@ for collaborations.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-create_user_exemption_from_collaboration_domain_restrictions_response = (
-    box.domain_restrictions_(
-        user_exemptions
-    ).create_user_exemption_from_collaboration_domain_restrictions(
-        user={
-            "id": "23522323",
-        },
-    )
+create_user_exemption_from_collaboration_domain_restrictions_response = box.domain_restrictions_(user_exemptions).create_user_exemption_from_collaboration_domain_restrictions(
+    user={
+        "id": "23522323",
+    },
 )
 ```
 
@@ -1955,9 +1944,7 @@ domain restrictions.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-get_user_exemption_response = box.domain_restrictions_(
-    user_exemptions
-).get_user_exemption(
+get_user_exemption_response = box.domain_restrictions_(user_exemptions).get_user_exemption(
     collaboration_whitelist_exempt_target_id="984923",
 )
 ```
@@ -1988,9 +1975,7 @@ domain restrictions.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-list_exempt_users_response = box.domain_restrictions_(
-    user_exemptions
-).list_exempt_users(
+list_exempt_users_response = box.domain_restrictions_(user_exemptions).list_exempt_users(
     marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
     limit=1000,
 )
@@ -2053,11 +2038,9 @@ collaboration for.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-add_allowed_domain_entry_response = (
-    box.domain_restrictions_for_collaborations.add_allowed_domain_entry(
-        domain="example.com",
-        direction="inbound",
-    )
+add_allowed_domain_entry_response = box.domain_restrictions_for_collaborations.add_allowed_domain_entry(
+    domain="example.com",
+    direction="inbound",
 )
 ```
 
@@ -2094,10 +2077,8 @@ for within the current enterprise.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-allowed_collaboration_domain_response = (
-    box.domain_restrictions_for_collaborations.allowed_collaboration_domain(
-        collaboration_whitelist_entry_id="213123",
-    )
+allowed_collaboration_domain_response = box.domain_restrictions_for_collaborations.allowed_collaboration_domain(
+    collaboration_whitelist_entry_id="213123",
 )
 ```
 
@@ -2127,11 +2108,9 @@ for within the current enterprise.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-list_allowed_collaboration_domains_response = (
-    box.domain_restrictions_for_collaborations.list_allowed_collaboration_domains(
-        marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
-        limit=1000,
-    )
+list_allowed_collaboration_domains_response = box.domain_restrictions_for_collaborations.list_allowed_collaboration_domains(
+    marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
+    limit=1000,
 )
 ```
 
@@ -2447,97 +2426,6 @@ events_0_response = box.events.events_0()
 
 ---
 
-### `box.file_activities.list_by_file_id`<a id="boxfile_activitieslist_by_file_id"></a>
-
-List file activities by file ID.
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```python
-list_by_file_id_response = box.file_activities.list_by_file_id(
-    file_id="888578620991",
-    activity_types=["comment,task,annotation,versions,app_activity"],
-    comment_fields=[
-        "tagged_message,message,created_at,created_by,modified_at,permissions"
-    ],
-    versions_fields=["created_by,end,start,type"],
-    annotation_fields=[
-        "file_version,description,created_at,created_by,modified_at,permissions,target,status"
-    ],
-    task_fields=[
-        "description,created_at,created_by,modified_at,permissions,completion_rule,status"
-    ],
-    app_activity_fields=["rendered_text,occurred_at,created_by,activity_template,app"],
-    reply_limit="1",
-    status="open",
-    enable_replies=True,
-    limit=1000,
-    marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
-)
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### file_id: `str`<a id="file_id-str"></a>
-
-File ID for which to retrieve activity
-
-##### activity_types: List[`str`]<a id="activity_types-liststr"></a>
-
-Comma-separated list of activity types to return. This field is ignored if marker is passed in. Defaults to all activity types.
-
-##### comment_fields: List[`str`]<a id="comment_fields-liststr"></a>
-
-fields that are required for comments
-
-##### versions_fields: List[`str`]<a id="versions_fields-liststr"></a>
-
-fields that are required for versions
-
-##### annotation_fields: List[`str`]<a id="annotation_fields-liststr"></a>
-
-fields that are required for annotations
-
-##### task_fields: List[`str`]<a id="task_fields-liststr"></a>
-
-fields that are required for tasks
-
-##### app_activity_fields: List[`str`]<a id="app_activity_fields-liststr"></a>
-
-fields that are required for `app_activity`
-
-##### reply_limit: `str`<a id="reply_limit-str"></a>
-
-maximum number of replies the response should contain per each top level activity[annotation, comment]
-
-##### status: `str`<a id="status-str"></a>
-
-Used to filter an annotation or a comment based on the status
-
-##### enable_replies: `bool`<a id="enable_replies-bool"></a>
-
-Whether or not replies should be returned
-
-##### limit: `int`<a id="limit-int"></a>
-
-The maximum number of items to return per page.
-
-##### marker: `str`<a id="marker-str"></a>
-
-Defines the position marker at which to begin returning results. This is used when paginating using marker-based pagination.  This requires `usemarker` to be set to `true`.
-
-#### 🔄 Return<a id="🔄-return"></a>
-
-[`Activities`](./box_python_sdk/pydantic/activities.py)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/file_activities` `get`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
 ### `box.file_requests.copy_request_to_folder`<a id="boxfile_requestscopy_request_to_folder"></a>
 
 Copies an existing file request that is already present on one folder,
@@ -2744,10 +2632,8 @@ assigned to a file version.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-get_file_version_legal_hold_info_response = (
-    box.file_version_legal_holds.get_file_version_legal_hold_info(
-        file_version_legal_hold_id="2348213",
-    )
+get_file_version_legal_hold_info_response = box.file_version_legal_holds.get_file_version_legal_hold_info(
+    file_version_legal_hold_id="2348213",
 )
 ```
 
@@ -2795,12 +2681,10 @@ Once the re-architecture is completed this API will be deprecated.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-list_file_version_legal_holds_response = (
-    box.file_version_legal_holds.list_file_version_legal_holds(
-        policy_id="133870",
-        marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
-        limit=1000,
-    )
+list_file_version_legal_holds_response = box.file_version_legal_holds.list_file_version_legal_holds(
+    policy_id="133870",
+    marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
+    limit=1000,
 )
 ```
 
@@ -2837,10 +2721,8 @@ Returns information about a file version retention.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-get_file_version_retention_info_response = (
-    box.file_version_retentions.get_file_version_retention_info(
-        file_version_retention_id="3424234",
-    )
+get_file_version_retention_info_response = box.file_version_retentions.get_file_version_retention_info(
+    file_version_retention_id="3424234",
 )
 ```
 
@@ -4342,7 +4224,7 @@ permissions can create new groups.
 ```python
 groups_0_response = box.groups.groups_0(
     name="Customer Support",
-    description='"Customer Support Group - as imported from Active Directory"',
+    description="\"Customer Support Group - as imported from Active Directory\"",
     provenance="Active Directory",
     external_sync_identifier="AD:123456",
     invitability_level="admins_only",
@@ -4434,7 +4316,7 @@ use this API.
 ```python
 update_group_response = box.groups.update_group(
     group_id="57645",
-    description='"Customer Support Group - as imported from Active Directory"',
+    description="\"Customer Support Group - as imported from Active Directory\"",
     name="Customer Support",
     provenance="Active Directory",
     external_sync_identifier="AD:123456",
@@ -4993,14 +4875,12 @@ Assign a legal hold to a file, file version, folder, or user.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-assign_file_legal_hold_response = (
-    box.legal_hold_policy_assignments.assign_file_legal_hold(
-        policy_id="123244",
-        assign_to={
-            "type": "folder",
-            "id": "6564564",
-        },
-    )
+assign_file_legal_hold_response = box.legal_hold_policy_assignments.assign_file_legal_hold(
+    policy_id="123244",
+    assign_to={
+        "type": "folder",
+        "id": "6564564",
+    },
 )
 ```
 
@@ -5195,13 +5075,11 @@ find a list of policy assignments for a given policy ID.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-list_previous_file_versions_response = (
-    box.legal_hold_policy_assignments.list_previous_file_versions(
-        legal_hold_policy_assignment_id="753465",
-        marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
-        limit=1000,
-        fields=["id", "type", "name"],
-    )
+list_previous_file_versions_response = box.legal_hold_policy_assignments.list_previous_file_versions(
+    legal_hold_policy_assignment_id="753465",
+    marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
+    limit=1000,
+    fields=["id", "type", "name"],
 )
 ```
 
@@ -5356,10 +5234,8 @@ Retrieve a specific metadata cascade policy assigned to a folder.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-get_policy_assigned_to_folder_response = (
-    box.metadata_cascade_policies.get_policy_assigned_to_folder(
-        metadata_cascade_policy_id="6fd4ff89-8fc1-42cf-8b29-1890dedd26d7",
-    )
+get_policy_assigned_to_folder_response = box.metadata_cascade_policies.get_policy_assigned_to_folder(
+    metadata_cascade_policy_id="6fd4ff89-8fc1-42cf-8b29-1890dedd26d7",
 )
 ```
 
@@ -5622,9 +5498,7 @@ application of the operations, the metadata instance will not be changed.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-update_instance_on_file_response = box.metadata_instances_(
-    files
-).update_instance_on_file(
+update_instance_on_file_response = box.metadata_instances_(files).update_instance_on_file(
     body=[
         {
             "op": "add",
@@ -5726,9 +5600,7 @@ folder. This can not be used on the root folder with ID `0`.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-get_folder_metadata_instance_response = box.metadata_instances_(
-    folders
-).get_folder_metadata_instance(
+get_folder_metadata_instance_response = box.metadata_instances_(folders).get_folder_metadata_instance(
     folder_id="12345",
     scope="global",
     template_key="properties",
@@ -5842,9 +5714,7 @@ application of the operations, the metadata instance will not be changed.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-update_instance_on_folder_response = box.metadata_instances_(
-    folders
-).update_instance_on_folder(
+update_instance_on_folder_response = box.metadata_instances_(folders).update_instance_on_folder(
     body=[
         {
             "op": "add",
@@ -6267,7 +6137,9 @@ create_policy_response = box.retention_policies.create_policy(
     retention_type="modifiable",
     can_owner_extend_retention=True,
     are_owners_notified=True,
-    custom_notification_recipients=[{}],
+    custom_notification_recipients=[
+        {}
+    ],
 )
 ```
 
@@ -6533,21 +6405,19 @@ Assigns a retention policy to an item.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-create_retention_assignment_response = (
-    box.retention_policy_assignments.create_retention_assignment(
-        policy_id="173463",
-        assign_to={
-            "type": "metadata_template",
-            "id": "6564564",
-        },
-        filter_fields=[
-            {
-                "field": "a0f4ee4e-1dc1-4h90-a8a9-aef55fc681d4",
-                "value": "0c27b756-0p87-4fe0-a43a-59fb661ccc4e",
-            }
-        ],
-        start_date_field="upload_date",
-    )
+create_retention_assignment_response = box.retention_policy_assignments.create_retention_assignment(
+    policy_id="173463",
+    assign_to={
+        "type": "metadata_template",
+        "id": "6564564",
+    },
+    filter_fields=[
+        {
+            "field": "a0f4ee4e-1dc1-4h90-a8a9-aef55fc681d4",
+            "value": "0c27b756-0p87-4fe0-a43a-59fb661ccc4e",
+        }
+    ],
+    start_date_field="upload_date",
 )
 ```
 
@@ -6675,12 +6545,10 @@ assignment.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-list_file_versions_under_retention_response = (
-    box.retention_policy_assignments.list_file_versions_under_retention(
-        retention_policy_assignment_id="1233123",
-        marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
-        limit=1000,
-    )
+list_file_versions_under_retention_response = box.retention_policy_assignments.list_file_versions_under_retention(
+    retention_policy_assignment_id="1233123",
+    marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
+    limit=1000,
 )
 ```
 
@@ -6717,12 +6585,10 @@ Returns a list of files under retention for a retention policy assignment.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-list_files_under_retention_response = (
-    box.retention_policy_assignments.list_files_under_retention(
-        retention_policy_assignment_id="1233123",
-        marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
-        limit=1000,
-    )
+list_files_under_retention_response = box.retention_policy_assignments.list_files_under_retention(
+    retention_policy_assignment_id="1233123",
+    marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
+    limit=1000,
 )
 ```
 
@@ -6806,13 +6672,7 @@ items_by_metadata_response = box.search.items_by_metadata(
     ],
     limit=50,
     marker="AAAAAmVYB1FWec8GH6yWu2nwmanfMh07IyYInaa7DZDYjgO1H4KoLW29vPlLY173OKsci6h6xGh61gG73gnaxoS+o0BbI1/h6le6cikjlupVhASwJ2Cj0tOD9wlnrUMHHw3/ISf+uuACzrOMhN6d5fYrbidPzS6MdhJOejuYlvsg4tcBYzjauP3+VU51p77HFAIuObnJT0ff",
-    fields=[
-        "extension",
-        "created_at",
-        "item_status",
-        "metadata.enterprise_1234.contracts",
-        "metadata.enterprise_1234.regions.location",
-    ],
+    fields=["extension", "created_at", "item_status", "metadata.enterprise_1234.contracts", "metadata.enterprise_1234.regions.location"],
 )
 ```
 
@@ -6880,12 +6740,10 @@ search_response = box.search.search(
     content_types=["name", "description"],
     type="file",
     trash_content="non_trashed_only",
-    mdfilters=[
-        {
-            "scope": "enterprise",
-            "template_key": "contract",
-        }
-    ],
+    mdfilters=[{
+    "scope": "enterprise",
+    "template_key": "contract",
+}],
     sort="modified_at",
     direction="ASC",
     limit=100,
@@ -7005,11 +6863,9 @@ Returns the status for the POST request.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-create_session_termination_jobs_response = (
-    box.session_termination.create_session_termination_jobs(
-        user_ids=["123456", "456789"],
-        user_logins=["user@sample.com", "user2@sample.com"],
-    )
+create_session_termination_jobs_response = box.session_termination.create_session_termination_jobs(
+    user_ids=["123456", "456789"],
+    user_logins=["user@sample.com", "user2@sample.com"],
 )
 ```
 
@@ -7349,9 +7205,7 @@ shared folder when only given a shared link.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-find_folder_by_shared_link_response = box.shared_links_(
-    folders
-).find_folder_by_shared_link(
+find_folder_by_shared_link_response = box.shared_links_(folders).find_folder_by_shared_link(
     boxapi="shared_link=[link]&shared_link_password=[password]",
     if_none_match="1",
     fields=["id", "type", "name"],
@@ -7391,9 +7245,7 @@ Gets the information for a shared link on a folder.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-get_shared_link_for_folder_response = box.shared_links_(
-    folders
-).get_shared_link_for_folder(
+get_shared_link_for_folder_response = box.shared_links_(folders).get_shared_link_for_folder(
     folder_id="12345",
     fields="shared_link",
 )
@@ -7471,9 +7323,7 @@ Updates a shared link on a folder.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-update_folder_shared_link_response = box.shared_links_(
-    folders
-).update_folder_shared_link(
+update_folder_shared_link_response = box.shared_links_(folders).update_folder_shared_link(
     folder_id="12345",
     fields="shared_link",
     shared_link={
@@ -7843,22 +7693,20 @@ Creates a new shield information barrier segment member.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-create_new_member_response = (
-    box.shield_information_barrier_segment_members.create_new_member(
-        shield_information_barrier_segment={
-            "id": "432554",
-            "type": "shield_information_barrier_segment",
-        },
-        user={
-            "id": "11446498",
-            "type": "user",
-        },
-        type="shield_information_barrier_segment_member",
-        shield_information_barrier={
-            "id": "11446498",
-            "type": "shield_information_barrier",
-        },
-    )
+create_new_member_response = box.shield_information_barrier_segment_members.create_new_member(
+    shield_information_barrier_segment={
+        "id": "432554",
+        "type": "shield_information_barrier_segment",
+    },
+    user={
+        "id": "11446498",
+        "type": "user",
+    },
+    type="shield_information_barrier_segment_member",
+    shield_information_barrier={
+        "id": "11446498",
+        "type": "shield_information_barrier",
+    },
 )
 ```
 
@@ -7933,12 +7781,10 @@ based on provided segment IDs.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-list_segment_members_based_on_ids_response = (
-    box.shield_information_barrier_segment_members.list_segment_members_based_on_ids(
-        shield_information_barrier_segment_id="3423",
-        marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
-        limit=1000,
-    )
+list_segment_members_based_on_ids_response = box.shield_information_barrier_segment_members.list_segment_members_based_on_ids(
+    shield_information_barrier_segment_id="3423",
+    marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
+    limit=1000,
 )
 ```
 
@@ -8003,22 +7849,20 @@ segment restriction object.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-create_barrier_object_response = (
-    box.shield_information_barrier_segment_restrictions.create_barrier_object(
-        type="shield_information_barrier_segment_restriction",
-        shield_information_barrier_segment={
-            "id": "1910967",
-            "type": "shield_information_barrier_segment",
-        },
-        restricted_segment={
-            "id": "1910967",
-            "type": "shield_information_barrier_segment",
-        },
-        shield_information_barrier={
-            "id": "11446498",
-            "type": "shield_information_barrier",
-        },
-    )
+create_barrier_object_response = box.shield_information_barrier_segment_restrictions.create_barrier_object(
+    type="shield_information_barrier_segment_restriction",
+    shield_information_barrier_segment={
+        "id": "1910967",
+        "type": "shield_information_barrier_segment",
+    },
+    restricted_segment={
+        "id": "1910967",
+        "type": "shield_information_barrier_segment",
+    },
+    shield_information_barrier={
+        "id": "11446498",
+        "type": "shield_information_barrier",
+    },
 )
 ```
 
@@ -8091,12 +7935,10 @@ based on provided segment ID.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-list_based_on_segment_id_response = (
-    box.shield_information_barrier_segment_restrictions.list_based_on_segment_id(
-        shield_information_barrier_segment_id="3423",
-        marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
-        limit=1000,
-    )
+list_based_on_segment_id_response = box.shield_information_barrier_segment_restrictions.list_based_on_segment_id(
+    shield_information_barrier_segment_id="3423",
+    marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
+    limit=1000,
 )
 ```
 
@@ -8166,7 +8008,7 @@ create_segment_response = box.shield_information_barrier_segments.create_segment
         "type": "shield_information_barrier",
     },
     name="Investment Banking",
-    description="Corporate division that engages in\n advisory_based financial\ntransactions on behalf of individuals,\ncorporations, and governments.",
+    description='Corporate division that engages in\n advisory_based financial\ntransactions on behalf of individuals,\ncorporations, and governments.',
 )
 ```
 
@@ -8263,12 +8105,10 @@ for the specified Information Barrier ID.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-list_information_objects_response = (
-    box.shield_information_barrier_segments.list_information_objects(
-        shield_information_barrier_id="1910967",
-        marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
-        limit=1000,
-    )
+list_information_objects_response = box.shield_information_barrier_segments.list_information_objects(
+    shield_information_barrier_id="1910967",
+    marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
+    limit=1000,
 )
 ```
 
@@ -8307,7 +8147,7 @@ Updates the shield information barrier segment based on provided ID..
 ```python
 update_by_id_response = box.shield_information_barrier_segments.update_by_id(
     shield_information_barrier_segment_id="3423",
-    description="Corporate division that engages in advisory_based\nfinancial transactions on behalf of individuals,\ncorporations, and governments.",
+    description='Corporate division that engages in advisory_based\nfinancial transactions on behalf of individuals,\ncorporations, and governments.',
     name="Investment Banking",
 )
 ```
@@ -8456,11 +8296,9 @@ for the enterprise of JWT.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-list_information_objects_response = (
-    box.shield_information_barriers.list_information_objects(
-        marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
-        limit=1000,
-    )
+list_information_objects_response = box.shield_information_barriers.list_information_objects(
+    marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
+    limit=1000,
 )
 ```
 
@@ -8821,7 +8659,9 @@ Applies one or more Box Skills metadata cards to a file.
 
 ```python
 apply_box_skill_cards_response = box.skills.apply_box_skill_cards(
-    cards=[None],
+    cards=[
+        None
+    ],
     file_id="12345",
 )
 ```
@@ -8915,7 +8755,8 @@ metadata cards on a file.
 ```python
 box.skills.update_all_box_skill_cards(
     status="success",
-    metadata={},
+    metadata={
+    },
     file={
         "type": "file",
         "id": "3243244",
@@ -9080,17 +8921,15 @@ Creates a storage policy assignment for an enterprise or user.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-create_assignment_response = (
-    box.standard_and_zones_storage_policy_assignments.create_assignment(
-        storage_policy={
-            "type": "storage_policy",
-            "id": "1434325",
-        },
-        assigned_to={
-            "type": "user",
-            "id": "9987987",
-        },
-    )
+create_assignment_response = box.standard_and_zones_storage_policy_assignments.create_assignment(
+    storage_policy={
+        "type": "storage_policy",
+        "id": "1434325",
+    },
+    assigned_to={
+        "type": "user",
+        "id": "9987987",
+    },
 )
 ```
 
@@ -9124,10 +8963,8 @@ Fetches a specific storage policy assignment.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-get_specific_assignment_response = (
-    box.standard_and_zones_storage_policy_assignments.get_specific_assignment(
-        storage_policy_assignment_id="932483",
-    )
+get_specific_assignment_response = box.standard_and_zones_storage_policy_assignments.get_specific_assignment(
+    storage_policy_assignment_id="932483",
 )
 ```
 
@@ -9156,12 +8993,10 @@ Fetches all the storage policy assignment for an enterprise or user.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-list_assignments_response = (
-    box.standard_and_zones_storage_policy_assignments.list_assignments(
-        resolved_for_type="user",
-        resolved_for_id="984322",
-        marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
-    )
+list_assignments_response = box.standard_and_zones_storage_policy_assignments.list_assignments(
+    resolved_for_type="user",
+    resolved_for_id="984322",
+    marker="JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii",
 )
 ```
 
@@ -9231,14 +9066,12 @@ Updates a specific storage policy assignment.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-update_specific_assignment_response = (
-    box.standard_and_zones_storage_policy_assignments.update_specific_assignment(
-        storage_policy={
-            "type": "storage_policy",
-            "id": "1434325",
-        },
-        storage_policy_assignment_id="932483",
-    )
+update_specific_assignment_response = box.standard_and_zones_storage_policy_assignments.update_specific_assignment(
+    storage_policy={
+        "type": "storage_policy",
+        "id": "1434325",
+    },
+    storage_policy_assignment_id="932483",
 )
 ```
 
@@ -9405,12 +9238,10 @@ used to update the state of a task assigned to a user.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-update_state_assigned_to_user_response = (
-    box.task_assignments.update_state_assigned_to_user(
-        task_assignment_id="12345",
-        message="Looks good to me",
-        resolution_state="completed",
-    )
+update_state_assigned_to_user_response = box.task_assignments.update_state_assigned_to_user(
+    task_assignment_id="12345",
+    message="Looks good to me",
+    resolution_state="completed",
 )
 ```
 
@@ -9648,12 +9479,10 @@ and type of user.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-create_for_enterprise_and_type_response = (
-    box.terms_of_service.create_for_enterprise_and_type(
-        status="enabled",
-        text="By collaborating on this file you are accepting...",
-        tos_type="managed",
-    )
+create_for_enterprise_and_type_response = box.terms_of_service.create_for_enterprise_and_type(
+    status="enabled",
+    text="By collaborating on this file you are accepting...",
+    tos_type="managed",
 )
 ```
 
@@ -10447,7 +10276,7 @@ file_content_update_response = box.uploads.file_content_update(
         "name": "Photo 2.0.png",
         "content_modified_at": "2012-12-12T10:53:43-08:00",
     },
-    file=open("/path/to/file", "rb"),
+    file=open('/path/to/file', 'rb'),
     if_match="1",
     fields=["id", "type", "name"],
     content_md5="134b65991ed521fcfe4724b7d814ab8ded5185dc",
@@ -10518,7 +10347,7 @@ small_file_response = box.uploads.small_file(
         "content_created_at": "2012-12-12T10:53:43-08:00",
         "content_modified_at": "2012-12-12T10:53:43-08:00",
     },
-    file=open("/path/to/file", "rb"),
+    file=open('/path/to/file', 'rb'),
     fields=["id", "type", "name"],
     content_md5="134b65991ed521fcfe4724b7d814ab8ded5185dc",
 )
@@ -10565,7 +10394,9 @@ uploaded chunks.
 
 ```python
 commit_session_response = box.uploads_(chunked).commit_session(
-    parts=[{}],
+    parts=[
+        {}
+    ],
     upload_session_id="D5E3F7A",
     digest="sha=fpRyg5eVQletdZqEKaFlqwBXJzM=",
     if_match="1",
@@ -10660,9 +10491,7 @@ Creates an upload session for an existing file.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-create_session_for_upload_0_response = box.uploads_(
-    chunked
-).create_session_for_upload_0(
+create_session_for_upload_0_response = box.uploads_(chunked).create_session_for_upload_0(
     file_size=104857600,
     file_id="12345",
     file_name="Project.mov",
@@ -10706,7 +10535,7 @@ Updates a chunk of an upload session for a file.
 
 ```python
 file_part_update_response = box.uploads_(chunked).file_part_update(
-    body=open("/path/to/file", "rb"),
+    body=open('/path/to/file', 'rb'),
     upload_session_id="D5E3F7A",
     digest="sha=fpRyg5eVQletdZqEKaFlqwBXJzM=",
     content_range="bytes 8388608-16777215/445856194",
@@ -10849,7 +10678,7 @@ Adds or updates a user avatar.
 ```python
 add_or_update_image_response = box.user_avatars.add_or_update_image(
     user_id="12345",
-    pic=open("/path/to/file", "rb"),
+    pic=open('/path/to/file', 'rb'),
 )
 ```
 

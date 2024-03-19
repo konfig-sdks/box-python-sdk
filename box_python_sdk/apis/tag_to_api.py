@@ -66,7 +66,6 @@ from box_python_sdk.apis.tags.standard_and_zones_storage_policies_api import Sta
 from box_python_sdk.apis.tags.uploads_api import UploadsApi
 from box_python_sdk.apis.tags.workflows_api import WorkflowsApi
 from box_python_sdk.apis.tags.downloads_api import DownloadsApi
-from box_python_sdk.apis.tags.file_activities_api import FileActivitiesApi
 from box_python_sdk.apis.tags.recent_items_api import RecentItemsApi
 from box_python_sdk.apis.tags.transfer_folders_api import TransferFoldersApi
 from box_python_sdk.apis.tags.trashed_items_api import TrashedItemsApi
@@ -139,7 +138,6 @@ TagToApi = typing_extensions.TypedDict(
         TagValues.UPLOADS: UploadsApi,
         TagValues.WORKFLOWS: WorkflowsApi,
         TagValues.DOWNLOADS: DownloadsApi,
-        TagValues.FILE_ACTIVITIES: FileActivitiesApi,
         TagValues.RECENT_ITEMS: RecentItemsApi,
         TagValues.TRANSFER_FOLDERS: TransferFoldersApi,
         TagValues.TRASHED_ITEMS: TrashedItemsApi,
@@ -213,7 +211,6 @@ tag_to_api = TagToApi(
         TagValues.UPLOADS: UploadsApi,
         TagValues.WORKFLOWS: WorkflowsApi,
         TagValues.DOWNLOADS: DownloadsApi,
-        TagValues.FILE_ACTIVITIES: FileActivitiesApi,
         TagValues.RECENT_ITEMS: RecentItemsApi,
         TagValues.TRANSFER_FOLDERS: TransferFoldersApi,
         TagValues.TRASHED_ITEMS: TrashedItemsApi,

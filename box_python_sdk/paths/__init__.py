@@ -169,4 +169,3 @@ class PathValues(str, enum.Enum):
     SIGN_TEMPLATES_TEMPLATE_ID = "/sign_templates/{template_id}"
     INTEGRATION_MAPPINGS_SLACK = "/integration_mappings/slack"
     INTEGRATION_MAPPINGS_SLACK_INTEGRATION_MAPPING_ID = "/integration_mappings/slack/{integration_mapping_id}"
-    FILE_ACTIVITIES = "/file_activities"

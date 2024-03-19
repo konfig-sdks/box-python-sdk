@@ -164,7 +164,6 @@ from box_python_sdk.apis.paths.sign_templates import SignTemplates
 from box_python_sdk.apis.paths.sign_templates_template_id import SignTemplatesTemplateId
 from box_python_sdk.apis.paths.integration_mappings_slack import IntegrationMappingsSlack
 from box_python_sdk.apis.paths.integration_mappings_slack_integration_mapping_id import IntegrationMappingsSlackIntegrationMappingId
-from box_python_sdk.apis.paths.file_activities import FileActivities
 
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
@@ -332,7 +331,6 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.SIGN_TEMPLATES_TEMPLATE_ID: SignTemplatesTemplateId,
         PathValues.INTEGRATION_MAPPINGS_SLACK: IntegrationMappingsSlack,
         PathValues.INTEGRATION_MAPPINGS_SLACK_INTEGRATION_MAPPING_ID: IntegrationMappingsSlackIntegrationMappingId,
-        PathValues.FILE_ACTIVITIES: FileActivities,
     }
 )
 
@@ -501,6 +499,5 @@ path_to_api = PathToApi(
         PathValues.SIGN_TEMPLATES_TEMPLATE_ID: SignTemplatesTemplateId,
         PathValues.INTEGRATION_MAPPINGS_SLACK: IntegrationMappingsSlack,
         PathValues.INTEGRATION_MAPPINGS_SLACK_INTEGRATION_MAPPING_ID: IntegrationMappingsSlackIntegrationMappingId,
-        PathValues.FILE_ACTIVITIES: FileActivities,
     }
 )

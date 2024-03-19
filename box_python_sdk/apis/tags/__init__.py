@@ -71,7 +71,6 @@ class TagValues(str, enum.Enum):
     UPLOADS = "Uploads"
     WORKFLOWS = "Workflows"
     DOWNLOADS = "Downloads"
-    FILE_ACTIVITIES = "File activities"
     RECENT_ITEMS = "Recent items"
     TRANSFER_FOLDERS = "Transfer folders"
     TRASHED_ITEMS = "Trashed items"

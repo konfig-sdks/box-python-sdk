@@ -30,7 +30,6 @@ from box_python_sdk.apis.tags.domain_restrictions_for_collaborations_api import 
 from box_python_sdk.apis.tags.downloads_api import DownloadsApi
 from box_python_sdk.apis.tags.email_aliases_api import EmailAliasesApi
 from box_python_sdk.apis.tags.events_api import EventsApi
-from box_python_sdk.apis.tags.file_activities_api import FileActivitiesApi
 from box_python_sdk.apis.tags.file_requests_api import FileRequestsApi
 from box_python_sdk.apis.tags.file_version_legal_holds_api import FileVersionLegalHoldsApi
 from box_python_sdk.apis.tags.file_version_retentions_api import FileVersionRetentionsApi
@@ -111,7 +110,6 @@ class Box(ClientCustom):
         self.downloads: DownloadsApi = DownloadsApi(api_client)
         self.email_aliases: EmailAliasesApi = EmailAliasesApi(api_client)
         self.events: EventsApi = EventsApi(api_client)
-        self.file_activities: FileActivitiesApi = FileActivitiesApi(api_client)
         self.file_requests: FileRequestsApi = FileRequestsApi(api_client)
         self.file_version_legal_holds: FileVersionLegalHoldsApi = FileVersionLegalHoldsApi(api_client)
         self.file_version_retentions: FileVersionRetentionsApi = FileVersionRetentionsApi(api_client)
